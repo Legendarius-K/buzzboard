@@ -1,8 +1,11 @@
 import { HomePosts } from "@/components/homePosts";
 import { getHomePosts } from "../../utils/supabase/queries";
 
+// export const dynamic = 'force-dynamic' // disable cache
+
 export default async function Home() {
     const { data, error } = await getHomePosts()
+
 
 
     return (
@@ -10,7 +13,7 @@ export default async function Home() {
             {error || data.length === 0 ? (
                 <div>No posts found</div>
             ) : (
-                <HomePosts posts={data} />
+                <HomePosts initialPosts={data} />
             )}
         </div>
     );

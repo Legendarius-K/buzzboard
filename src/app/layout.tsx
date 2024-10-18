@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
+import { QueryClientProvider } from "../../providers/query-client-provider";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -30,11 +31,13 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} min-h-full antialiased flex flex-col`}
             >
-                <Header />
-                <div className="p-5 grow">
-                    {/* <Sidebar /> */}
-                    {children}
-                </div>
+                <QueryClientProvider>
+                    <Header />
+                    <div className="p-5 grow">
+                        {/* <Sidebar /> */}
+                        {children}
+                    </div>
+                </QueryClientProvider>
             </body>
         </html>
     );

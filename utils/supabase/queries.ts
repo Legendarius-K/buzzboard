@@ -10,3 +10,14 @@ export const getHomePosts = async () => {
 }
 
 export type HomePostsType = QueryData<ReturnType<typeof getHomePosts>>
+
+export const getPostsByQuery = (searchQuery: string) => {
+    const supabase = createClient();
+    if (searchQuery.length > 1) {
+        return supabase
+            .from('posts')
+            .select('title, id, slug, author')
+            .textSearch("title", searchQuery.replace(/ /g, '+'))
+            // .ilike('title', `%${searchQuery}%`);
+    }
+}
