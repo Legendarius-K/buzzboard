@@ -8,14 +8,14 @@ import { usePathname } from "next/navigation";
 
 export const Search = () => {
     const [searchQuery, setSearchQuery] = useState('')
-    const [debouncedQuery, setDebouncedQuery] = useState(''); 
-    const [showNoPosts, setShowNoPosts] = useState(false);    
+    const [debouncedQuery, setDebouncedQuery] = useState('');
+    const [showNoPosts, setShowNoPosts] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedQuery(searchQuery);
-        }, 500); 
+        }, 500);
 
         return () => {
             clearTimeout(handler);
@@ -25,20 +25,22 @@ export const Search = () => {
     const { data, error } = useQuery({
         queryKey: ['search', debouncedQuery],
         queryFn: async () => {
-            const { data, error } = await getPostsByQuery(debouncedQuery)
+            if (searchQuery.length > 1) {
+                const { data, error } = await getPostsByQuery(debouncedQuery)
 
-            if (error) throw error
-            return data
+                if (error) throw error
+                return data
+            }
         },
         enabled: () => searchQuery && searchQuery.length >= 2 ? true : false
     })
-    console.log(data);
+    
 
     useEffect(() => {
         setDebouncedQuery('')
         setSearchQuery('')
     }, [pathname])
-    
+
     useEffect(() => {
         if (debouncedQuery && data?.length === 0) {
             const noPostsHandler = setTimeout(() => {

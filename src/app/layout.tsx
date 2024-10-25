@@ -32,11 +32,7 @@ export default function RootLayout({
                 className={`${geistSans.variable} ${geistMono.variable} min-h-full antialiased flex flex-col`}
             >
                 <QueryClientProvider>
-                    <Header />
-                    <div className="p-5 grow">
-                        {/* <Sidebar /> */}
                         {children}
-                    </div>
                 </QueryClientProvider>
             </body>
         </html>

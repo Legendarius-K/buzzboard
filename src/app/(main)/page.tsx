@@ -1,12 +1,12 @@
 import { HomePosts } from "@/components/homePosts";
-import { getHomePosts } from "../../utils/supabase/queries";
+import { getHomePosts } from "../../../utils/supabase/queries";
+import { createClient } from "../../../utils/supabase/server";
 
 // export const dynamic = 'force-dynamic' // disable cache
 
 export default async function Home() {
-    const { data, error } = await getHomePosts()
-
-
+    const supabase = createClient();
+    const { data, error } = await getHomePosts(supabase)
 
     return (
         <div className="">
