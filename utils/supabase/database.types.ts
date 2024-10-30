@@ -67,6 +67,7 @@ export type Database = {
           id: string
           slug: string
           title: string
+          user_id: string
         }
         Insert: {
           author: string
@@ -76,6 +77,7 @@ export type Database = {
           id?: string
           slug: string
           title?: string
+          user_id?: string
         }
         Update: {
           author?: string
@@ -85,6 +87,7 @@ export type Database = {
           id?: string
           slug?: string
           title?: string
+          user_id?: string
         }
         Relationships: [
           {
@@ -93,6 +96,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["username"]
+          },
+          {
+            foreignKeyName: "posts_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
           },
         ]
       }

@@ -6,7 +6,7 @@ export default function SignUpPage() {
     return (
         <div className="h-screen bg-neutral-100 flex justify-center items-center">
             <SignUpForm/>
-            <Link className="absolute bottom-6" href={'/auth-log-in'}>Already have an account? <span className="text-blue-700 underline">Log in!</span></Link>
+            <Link className="absolute bottom-6 text-sm md:text-base" href={'/auth/log-in'}>Already have an account? <span className="text-blue-700 underline">Log in!</span></Link>
         </div>
     );
 };

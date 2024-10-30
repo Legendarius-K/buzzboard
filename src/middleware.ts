@@ -37,4 +37,4 @@ export const middleware = async (request: NextRequest) => {
     return supabaseResponse
 }
 
-const protectedRoutes = ['create']
+const protectedRoutes = ['/create']

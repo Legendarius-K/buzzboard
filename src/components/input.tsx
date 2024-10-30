@@ -1,21 +1,23 @@
 import { forwardRef, type InputHTMLAttributes } from 'react'
 import { cn } from '@/lib/utils';
+import { type FieldError } from 'react-hook-form';
 
 type Props = Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'htmlFor'> & {
     label: string
+    error?: FieldError
 }
 
 export const Input = forwardRef<HTMLInputElement, Props>(
     (
         {
             label,
-            name,
+            name, error,
             ...props
         },
         ref,
     ) => {
         return (
-            <div className='group relative'>
+            <div className='group relative flex flex-col'>
                 <input ref={ref}
                     {...props}
                     name={name}
@@ -32,6 +34,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
                     )}
                     htmlFor={name}
                 >{label}</label>
+                {error && <span className='ml-3 text-sm text-amber-700'>{error.message}</span>}
             </div>
         );
     }
