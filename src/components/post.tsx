@@ -25,7 +25,7 @@ export const Post = ({
     const timeAgo = formatDistanceToNow(new Date(date), { addSuffix: true });
 
     return (
-        <div className="flex flex-col items-center w-full md:w-auto relative">
+        <div className="flex flex-col items-center w-full md:w-auto relative py-6">
             <p className="text-neutral-500  text-[9px]">{timeAgo}</p>
             <div className="bg-neutral-200/60 transition-all p-3 pb-0 w-full md:w-[450px] rounded-xl flex flex-col items-center">
                 <div className="w-full relative flex justify-between pb-1">
