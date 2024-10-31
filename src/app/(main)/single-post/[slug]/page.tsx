@@ -24,7 +24,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
     return (
         <div className="flex flex-col items-center gap-3 w-full md:w-auto relative">
             <p className="text-neutral-500  text-[12px]">{timeAgo}</p>
-            <div className=" bg-neutral-200  transition-all p-3 md:p-6 pb-2 md:pb-2 w-full md:w-[550px] rounded-xl flex flex-col items-center">
+            <div className=" bg-neutral-200/60  transition-all p-3 md:p-6 pb-2 md:pb-2 w-full md:w-[550px] rounded-xl flex flex-col items-center">
                 <div className="w-full relative flex justify-between pb-1">
                     <h2 className=" text-sm font-medium flex gap-1"><User size={18} />{data?.author}</h2>
                     <h3 className="font-medium md:text-lg">{data?.title}</h3>

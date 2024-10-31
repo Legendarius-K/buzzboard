@@ -27,7 +27,7 @@ export const Post = ({
     return (
         <div className="flex flex-col items-center w-full md:w-auto relative">
             <p className="text-neutral-500  text-[9px]">{timeAgo}</p>
-            <div className="bg-neutral-200 transition-all p-3 pb-0 w-full md:w-[450px] rounded-xl flex flex-col items-center">
+            <div className="bg-neutral-200/60 transition-all p-3 pb-0 w-full md:w-[450px] rounded-xl flex flex-col items-center">
                 <div className="w-full relative flex justify-between pb-1">
                     <h2 className="text-sm font-medium flex gap-1"><User size={18} />{author}</h2>
                     <h3 className="font-medium">{title}</h3>
