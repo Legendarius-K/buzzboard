@@ -1,81 +1,81 @@
-'use client'
+// CommentComp.tsx
+"use client";
 
 import { useEffect, useState } from "react";
 import CommentInput from "./commentForm";
-import CommentsItem from './commentItem';
-import { getComments, addComment } from '../../../utils/supabase/queries'
+import CommentsItem from "./commentItem";
+import { getComments, addComment } from "../../../utils/supabase/queries";
 
 export type Comment = {
-    id: string;
-    content: string;
-    children: Comment[];
-    parent_id: string | null;
+  id: string;
+  content: string;
+  children: Comment[];
+  parent_id: string | null;
 };
 
 const CommentComp = () => {
-    const [comments, setComments] = useState<Comment[]>([]);
+  const [comments, setComments] = useState<Comment[]>([]);
 
-    // Fetch comments on component mount
-    const fetchComments = async () => {
-        const data = await getComments();
-        const nestedComments = nestComments(data); // Nest comments based on parent_id
-        setComments(nestedComments);
-    };
+  const fetchComments = async () => {
+    const data = await getComments();
+    const nestedComments = nestComments(data);
+    setComments(nestedComments);
+  };
 
-    // Nest comments based on parent_id
-    const nestComments = (comments: Comment[]) => {
-        const map = new Map<string, Comment>();
-        const roots: Comment[] = [];
+  const nestComments = (comments: Comment[]) => {
+    const map = new Map<string, Comment>();
+    const roots: Comment[] = [];
 
-        comments.forEach(comment => {
-            comment.children = [];
-            map.set(comment.id, comment);
+    comments.forEach((comment) => {
+      comment.children = [];
+      map.set(comment.id, comment);
 
-            // If parent_id is null, it's a root comment
-            if (!comment.parent_id) {
-                roots.push(comment);
-            } else {
-                const parent = map.get(comment.parent_id);
-                if (parent) {
-                    parent.children.push(comment);
-                }
-            }
-        });
-
-        return roots;
-    };
-
-    // Handle adding a new comment or reply
-    const handleAddComment = async (content: string, parent_id: string | null = null) => {
-        const newComment = await addComment(content, parent_id);
-        if (newComment) {
-            fetchComments(); // Refresh comments after adding a new one
+      if (!comment.parent_id) {
+        roots.push(comment);
+      } else {
+        const parent = map.get(comment.parent_id);
+        if (parent) {
+          parent.children.push(comment);
         }
-    };
+      }
+    });
 
-    useEffect(() => {
-        fetchComments(); // Fetch comments on mount
-    }, []);
+    return roots;
+  };
 
-    return (
-        <main className="self-start">
-            <div>
-                {/* Top-level comment input */}
-                <CommentInput handleAddComment={(content) => handleAddComment(content)} />
+  const handleAddComment = async (
+    content: string,
+    parent_id: string | null = null
+  ) => {
+    const newComment = await addComment(content, parent_id);
+    if (newComment) {
+      fetchComments(); // Refresh comments after adding a new one
+    }
+  };
 
-                {/* Render nested comments */}
-                <div>
-                    {comments.map((comment) => (
-                        <CommentsItem
-                            key={comment.id}
-                            comment={comment}
-                            onUpdateComments={(replyContent) => handleAddComment(replyContent, comment.id)} // Handle replies
-                        />
-                    ))}
-                </div>
-            </div>
-        </main>
-    );
+  useEffect(() => {
+    fetchComments(); // Fetch comments on mount
+  }, []);
+
+  return (
+    <main className="self-start">
+      <div>
+        <CommentInput
+          handleAddComment={(content) => handleAddComment(content)}
+        />
+
+        <div>
+          {comments.map((comment) => (
+            <CommentsItem
+              key={comment.id}
+              comment={comment}
+              onUpdateComments={handleAddComment} // Pass `handleAddComment` for nested replies
+            />
+          ))}
+        </div>
+      </div>
+    </main>
+  );
 };
 
 export default CommentComp;

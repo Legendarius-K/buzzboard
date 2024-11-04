@@ -1,5 +1,7 @@
+import { revalidatePath } from "next/cache";
 import { createClient } from "./client";
 import { QueryData } from '@supabase/supabase-js'
+import { slugify } from "../slugify";
 
 export const getHomePosts = async (supabase: ReturnType<typeof createClient>) => {
     return supabase
@@ -64,5 +66,12 @@ export const addComment = async (content: string, parent_id: string | null = nul
         return null;
     }
 
+    // await supabase
+    // .from('posts')
+    // .select('title')
+    // .eq()
+
+    // revalidatePath(`/single-post/comment-test-post")}`);
     return data;
+
 };
