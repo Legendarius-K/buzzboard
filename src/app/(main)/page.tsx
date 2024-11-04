@@ -12,7 +12,7 @@ export default async function Home() {
     const { data, error } = await getHomePosts(supabase)
 
     return (
-        <div className="">
+        <div className="flex justify-center">
             {error || data.length === 0 ? (
                 <div>No posts found</div>
             ) : (

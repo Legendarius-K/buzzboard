@@ -25,9 +25,9 @@ export default function CreatePage() {
     })
 
     return (
-        <main className="pt-6 md:pt-16 h-full flex justify-center">
+        <main className="pt-6 md:pt-10 h-full flex justify-center">
             <div className="w-full sm:w-[600px]">
-                <h2 className="font-mono font-bold text-center text-xl pb-8 md:pb-12">Create post</h2>
+                <h2 className="font-mono font-bold text-center text-xl pb-8 md:pb-12 text-neutral-100">Create post</h2>
                 <form onSubmit={handleSubmit((values) => mutate(values))} className="flex flex-col gap-4">
                     <Input {...register('title')} type="text" label="Title" name="title" required error={errors.title} />
                     {/* <BasicSelect /> */}

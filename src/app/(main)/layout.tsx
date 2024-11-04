@@ -1,14 +1,17 @@
 import { Header } from '@/components/header'
+import { Sidebar } from '@/components/sidebar'
 
 export default function MainLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+
   return (
     <>
       <Header />
-      <div className='p-5 grow'>
+      <div className=' grow flex justify-center pt-[72px] pl-0'>
+        <Sidebar />
         {children}
       </div>
     </>

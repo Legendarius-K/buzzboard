@@ -15,9 +15,16 @@ export const DeleteButton = ({ postId }: { postId: string }) => {
         onSettled: () => toast.dismiss()
     })
     return (
-        <div onClick={() => mutate()} >
-            {isPending ? <Loader size={20} className="animate-spin-slow" /> : <Trash2 className="transition-all cursor-pointer text-gray-600 hover:text-red-600" size={20} />}
-        </div>
+      <div onClick={() => mutate()}>
+        {isPending ? (
+          <Loader size={20} className="animate-spin-slow" />
+        ) : (
+          <Trash2
+            className="transition-all cursor-pointer text-neutral-200 hover:text-red-600"
+            size={20}
+          />
+        )}
+      </div>
     );
 };
 

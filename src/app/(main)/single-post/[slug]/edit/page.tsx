@@ -29,7 +29,7 @@ export default async function EditPostPage({
 
   return (
     <main className="main">
-      <h2 className="font-mono font-bold text-center text-xl pb-8 md:pb-12">
+      <h2 className="font-mono font-bold text-center text-xl pb-8 md:pb-12 text-neutral-100">
         Edit post
       </h2>
       <EditPostForm defaultValues={post} postId={post.id}/>

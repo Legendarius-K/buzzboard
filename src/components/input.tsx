@@ -29,8 +29,8 @@ export const Input = forwardRef<HTMLInputElement, Props>(
                 <label
                     className={cn(
                         'absolute -top-4 left-2 transition-all text-sm pointer-events-none',
-                        'peer-focus-visible:-top-4 peer-focus-visible:left-2 peer-focus-visible:text-sm peer-focus-visible:text-gray-800',
-                        'peer-placeholder-shown:left-6 peer-placeholder-shown:top-[7px] bottom-[10px] peer-placeholder-shown:text-lg text-gray-500 peer-placeholder-shown:pointer-events-none',
+                        'peer-focus-visible:-top-4 peer-focus-visible:left-2 peer-focus-visible:text-sm peer-focus-visible:text-gray-200',
+                        'peer-placeholder-shown:left-6 peer-placeholder-shown:top-[7px] bottom-[10px] peer-placeholder-shown:text-lg text-gray-400 peer-placeholder-shown:pointer-events-none',
                     )}
                     htmlFor={name}
                 >{label}</label>

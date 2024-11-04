@@ -20,7 +20,7 @@ export const SignUpForm = () => {
 
     return (
         <div>
-            <h2 className="font-mono font-bold text-center text-xl pb-12">Welcome to BuzzBoard!</h2>
+            <h2 className="font-mono font-bold text-center text-xl pb-12 text-neutral-100">Welcome to BuzzBoard!</h2>
             <form onSubmit={handleSubmit((values) => mutate(values))} className="flex flex-col gap-6">
                 <Input  {...register('email')} error={errors.email} type="email" label="email" name="email" required />
                 <Input {...register('username')}  type="text" label="username" error={errors.username} name="username" required />

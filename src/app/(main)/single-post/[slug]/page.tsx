@@ -29,9 +29,9 @@ export default async function PostPage({
   console.log("isAuthor: ", isAuthor);
 
   return (
-    <div className="flex flex-col items-center gap-3 w-full md:w-auto relative">
-      <p className="text-neutral-500  text-[12px]">{timeAgo}</p>
-      <div className=" bg-neutral-200/60  transition-all p-3 md:p-6 pb-2 md:pb-2 w-full md:w-[550px] rounded-xl flex flex-col items-center shadow-xl">
+    <div className="flex flex-col items-center gap-3 w-full md:w-auto relative text-neutral-100">
+      <p className="text-neutral-100  text-[12px]">{timeAgo}</p>
+      <div className=" bg-bgdark  transition-all p-3 md:p-6 pb-2 md:pb-2 w-full md:w-[550px] rounded-xl flex flex-col items-center shadow-xl">
         <div className="w-full relative flex justify-between pb-1">
           <h2 className=" text-sm font-medium flex gap-1">
             <User size={18} />
@@ -42,28 +42,28 @@ export default async function PostPage({
             href={`/category/${data?.category}`}
             className={cn(
               "text-sm hover:text-blue-900 hover:underline font-medium",
-              data?.category === "coding" && "text-amber-700",
-              data?.category === "general" && "text-green-800"
+              data?.category === "coding" && "text-amber-500",
+              data?.category === "general" && "text-green-500"
             )}
           >
             {data?.category}
           </Link>
         </div>
-        <div className="w-full text-sm p-1 md:p-2 bg-neutral-50 rounded-lg min-h-[120px]">
+        <div className="w-full text-sm p-1 md:p-2 bg-neutral-100 text-black rounded-lg min-h-[120px]">
           {data?.content}
         </div>
         <div className="w-full pt-2 flex justify-end gap-3">
           {user && (
             <MessageSquare
               size={20}
-              className="text-gray-600 hover:text-green-600 cursor-pointer"
+              className="text-neutral-200 hover:text-green-600 cursor-pointer"
             />
           )}
           {isAuthor && (
             <>
               <Link href={`/single-post/${params.slug}/edit`}>
                 <PencilLine
-                  className="text-gray-600 hover:text-blue-400 cursor-pointer"
+                  className="text-neutral-200 hover:text-blue-400 cursor-pointer"
                   size={20}
                 />
               </Link>

@@ -20,7 +20,7 @@ export const LogInForm = () => {
 
     return (
         <div>
-            <h2 className="font-mono font-bold text-center text-xl pb-12">Welcome back!</h2>
+            <h2 className="font-mono font-bold text-center text-xl pb-12 text-neutral-100">Welcome back!</h2>
             <form onSubmit={handleSubmit((values) => mutate(values), (error) => console.log('ERROR'))}
                 className="flex flex-col gap-6">
                 <Input {...register('email')} error={errors.email} label="email" name="email" />

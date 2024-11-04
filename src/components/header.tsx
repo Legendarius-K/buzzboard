@@ -13,9 +13,9 @@ export const Header = async () => {
     const { data: { user } } = await supabase.auth.getUser()
     
     return (
-        <header className="px-3 py-4 bg-neutral-200  shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
-            <Link className="flex items-center gap-1" href={'/'}><Image className="w-10" src={logo} alt="logo" /><h1 className="font-mono text-lg font-bold">BuzzBoard</h1></Link>
-            {user ? (
+        <header className="px-3 py-2 md:py-4 bg-bgdark fixed top-0 w-full z-30 shadow-sm flex flex-row md:flex-row gap-4 items-center justify-between">
+            <Link className="flex items-center gap-1" href={'/'}><Image className="w-10" src={logo} alt="logo" /><h1 className="font-mono text-lg font-bold text-neutral-100">BuzzBoard</h1></Link>
+            {/* {user ? (
                 <div className="flex">
                     <div className="w-[110px] mr-2">
                         <CreateButton />
@@ -28,7 +28,7 @@ export const Header = async () => {
                 <Link href={'/auth/log-in'} className="bg-primary flex justify-center hover:bg-primaryhover text-neutral-100 font-mono font-bold py-2 rounded-full shadow-lg transition-all w-full max-w-[110px]">
                     Log in
                 </Link>
-            )}
+            )} */}
             <Search />
         </header>
     )
