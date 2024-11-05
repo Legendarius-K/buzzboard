@@ -3,7 +3,6 @@ import { createClient } from "../../../../../utils/supabase/server";
 import Link from "next/link";
 import { MessageSquare, PencilLine, User } from "lucide-react";
 import { cn } from "@/lib/utils";
-// import CommentComp from "@/components/comments/comment";
 import { getSinglePost } from "../../../../../utils/supabase/queries";
 import { formatDistanceToNow } from "date-fns";
 import { DeleteButton } from "@/components/deleteButton";
@@ -74,7 +73,6 @@ export default async function PostPage({
             </>
           )}
         </div>
-        {/* <CommentComp /> */}
       </div>
     </div>
   );
