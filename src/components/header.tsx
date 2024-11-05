@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Search } from "./search";
-import CommentComp from "./comments/comment";
 import Image from "next/image";
 import logo from '../../public/logo.png'
 import { createClient } from "../../utils/supabase/server";
