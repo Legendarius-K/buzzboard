@@ -39,7 +39,10 @@ export const Post = ({
               className={cn(
                 "text-sm hover:text-blue-900 hover:underline font-medium",
                 category === "coding" && "text-amber-500",
-                category === "general" && "text-green-500"
+                category === "general" && "text-green-500",
+                category === "cakes" && "text-blue-500",
+                category === "carpentry" && "text-purple-500",
+                category === "insects" && "text-red-500",
               )}
             >
               {category}

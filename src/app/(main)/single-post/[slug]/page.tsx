@@ -43,7 +43,10 @@ export default async function PostPage({
             className={cn(
               "text-sm hover:text-blue-900 hover:underline font-medium",
               data?.category === "coding" && "text-amber-500",
-              data?.category === "general" && "text-green-500"
+              data?.category === "general" && "text-green-500",
+              data?.category === "cakes" && "text-blue-500",
+              data?.category === "carpentry" && "text-purple-500",
+              data?.category === "insects" && "text-red-500"
             )}
           >
             {data?.category}
