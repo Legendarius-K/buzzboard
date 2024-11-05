@@ -3,10 +3,11 @@ import { createClient } from "../../utils/supabase/client";
 import { CreateButton } from "./createButton";
 import { LogOutButton } from "./logOutButton";
 import { useEffect, useState } from "react";
+import { User } from "@supabase/supabase-js";
 
 
 export const SidebarButtons = () => {
-     const [user, setUser] = useState(null);
+     const [user, setUser] = useState<User | null>(null);
     //  const [loading, setLoading] = useState(true);
 
      useEffect(() => {
