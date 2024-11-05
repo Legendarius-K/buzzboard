@@ -10,7 +10,7 @@ export default function MainLayout({
   return (
     <>
       <Header />
-      <div className=' grow flex justify-center pt-[72px] pl-0'>
+      <div className=' grow flex justify-center pt-[92px] pl-0'>
         <Sidebar />
         {children}
       </div>
