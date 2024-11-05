@@ -24,7 +24,7 @@ export const Sidebar = () => {
     <aside
       className={cn(
         "w-[160px] transition-all overflow-hidden ease-in-out h-calc(100%-72px) fixed z-30 left-0 top-[56px] md:top-[72px] border-r-2 shadow-xl box-content hover:border-r-4 border-neutral-400 bg-neutral-800 text-neutral-100",
-        !open && "w-0 border-r-4 hover:border-neutral-200 overflow-hidden"
+        !open && "w-0 border-r-[3px] hover:border-neutral-200 overflow-hidden"
       )}
       style={{height: "calc(100% - 56px)"}}
     >
@@ -32,8 +32,8 @@ export const Sidebar = () => {
         size={30}
         onClick={toggleSidebar}
         className={cn(
-          "transition-all cursor-pointer fixed left-[130px] text-neutral-300 hover:text-neutral-100 z-40 h-full",
-          !open && "left-2 rotate-180 "
+          "transition-all cursor-pointer fixed left-[130px] text-neutral-300 hover:text-white z-40 h-full",
+          !open && "left-[4px] rotate-180 ",
         )}
       />
       <div

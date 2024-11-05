@@ -28,7 +28,7 @@ export default async function PostPage({
   console.log("isAuthor: ", isAuthor);
 
   return (
-    <div className="flex flex-col items-center gap-3 w-full md:w-auto relative text-neutral-100">
+    <div className="flex flex-col items-center gap-3 w-full md:w-auto relative text-neutral-100 px-2">
       <p className="text-neutral-100  text-[12px]">{timeAgo}</p>
       <div className=" bg-bgdark  transition-all p-3 md:p-6 pb-2 md:pb-2 w-full md:w-[550px] rounded-xl flex flex-col items-center shadow-xl">
         <div className="w-full relative flex justify-between pb-1">

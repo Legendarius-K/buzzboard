@@ -12,11 +12,11 @@ export default async function Home() {
     const { data, error } = await getHomePosts(supabase)
 
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center w-full p-4 pb-10">
             {error || data.length === 0 ? (
                 <div>No posts found</div>
             ) : (
-                <section className="flex flex-col items-center gap-6">
+                <section className="flex flex-col items-center gap-6 w-full">
                     {data?.map(({ id, title, slug, content, author, date, category }) =>
                         <Post key={id} title={title} slug={slug} author={author} content={content} date={date} category={category} />
                     )}
