@@ -23,10 +23,24 @@ export const addComment = async (formData: FormData) => {
     data: { user },
   } = await supabase.auth.getUser();
 
+  if (!user) {
+    throw new Error('Not logged in')
+  }
+
+  const {data: username} = await supabase
+  .from('users')
+  .select('username')
+  .eq('id', user.id)
+  .single()
+
+  if (!username) {
+    throw new Error('No user found')
+  }
+
   const {} = await supabase
     .from("comments")
     .insert([
-      { content: data.comment, post_id: data.postId, user_id: user?.id },
+      { content: data.comment, post_id: data.postId, user_id: user?.id, author: username?.username },
     ]);
 
   redirect(`/single-post/${post?.slug}`);

@@ -6,8 +6,6 @@ import { cn } from "@/lib/utils";
 import { getSinglePost } from "../../../../../utils/supabase/queries";
 import { formatDistanceToNow } from "date-fns";
 import { DeleteButton } from "@/components/deleteButton";
-import { Input } from "@/components/input";
-import { SubmitButton } from "@/components/button";
 import { Comments } from "@/components/comments";
 
 export default async function PostPage({
@@ -72,12 +70,12 @@ export default async function PostPage({
           {data?.content}
         </div>
         <div className="w-full pt-2 flex justify-end gap-3">
-          {user && (
+          {/* {user && (
             <MessageSquare
               size={20}
               className="text-neutral-200 hover:text-green-600 cursor-pointer"
             />
-          )}
+          )} */}
           {isAuthor && (
             <>
               <Link href={`/single-post/${params.slug}/edit`}>

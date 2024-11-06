@@ -1,8 +1,7 @@
 import { addComment } from "../../actions/add-comment";
-import { getSinglePost } from "../../utils/supabase/queries";
 import { createClient } from "../../utils/supabase/server";
-import { Input } from "./input";
 import { DeleteCommentButton } from "./deleteCommentButton";
+import { User } from "lucide-react";
 
 export const Comments = async ({
   postId,
@@ -15,7 +14,7 @@ export const Comments = async ({
 
   const { data: comments } = await supabase
     .from("comments")
-    .select("content, user_id, id")
+    .select("content, user_id, id, author")
     .eq("post_id", postId as string)
     .order("created_at", { ascending: true });
 
@@ -59,14 +58,20 @@ export const Comments = async ({
         {comments?.map((comment, index) => (
           <div
             key={index}
-            className="bg-bgdark p-4 rounded-lg my-3 flex items-center"
+            className="bg-bgdark p-4 pb-1 rounded-lg my-3 flex flex-col items-center"
           >
-            <div className="bg-neutral-100 text-black p-2 rounded-md w-[97%] mr-3">
+            <div className="bg-neutral-100 text-black p-2  rounded-md w-full ">
               {comment.content}
             </div>
-            {user && (user.id === comment.user_id || isAuthor) && (
-              <DeleteCommentButton commentId={comment.id} slug={slug} />
-            )}
+            <div className="w-full flex justify-between pt-1">
+              <div className="flex items-center gap-1 text-sm">
+                <User size={16} />
+                {comment.author}
+              </div>
+              {user && (user.id === comment.user_id || isAuthor) && (
+                <DeleteCommentButton commentId={comment.id} slug={slug} />
+              )}
+            </div>
           </div>
         ))}
       </div>
