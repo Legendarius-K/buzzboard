@@ -46,7 +46,7 @@ export const Sidebar = () => {
           {navItems?.map((item, index) => (
             <Link
               key={index}
-              className="hover:border-neutral-300 hover:text-neutral-300 border-b border-neutral-500 pl-2 transition-all"
+              className="hover:border-neutral-300 hover:bg-bgmedium hover:text-neutral-300 border-b border-neutral-500 pl-2 transition-all"
               href={item.path}
             >
               {item.title}

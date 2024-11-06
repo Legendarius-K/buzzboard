@@ -91,23 +91,6 @@ export default async function PostPage({
           )}
         </div>
       </div>
-      {/* <div className="my-6 w-full">
-        <form className="flex justify-around">
-          <Input type="comment" name="comment" label="comment" />
-          <button className="bg-primary flex gap-2 justify-center items-center hover:bg-primaryhover text-neutral-100 font-mono font-bold py-2 rounded-full shadow-lg transition-all w-[110px]">
-            Post
-          </button>
-        </form>
-      </div>
-      <div className="w-full px-4 border-l-2 ml-6 md:ml-0">
-        {comments?.map((comment, index) => (
-          <div key={index} className="bg-bgdark p-4 rounded-lg my-3">
-            <div className="bg-neutral-100 text-black p-2 rounded-md">
-              {comment.content}
-            </div>
-          </div>
-        ))}
-      </div> */}
       <Comments postId={postId} slug={params.slug} />
     </div>
   );

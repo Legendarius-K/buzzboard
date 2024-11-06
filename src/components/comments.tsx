@@ -1,8 +1,8 @@
-import { Trash2 } from "lucide-react";
 import { addComment } from "../../actions/add-comment";
 import { getSinglePost } from "../../utils/supabase/queries";
 import { createClient } from "../../utils/supabase/server";
 import { Input } from "./input";
+import { DeleteCommentButton } from "./deleteCommentButton";
 
 export const Comments = async ({
   postId,
@@ -15,7 +15,7 @@ export const Comments = async ({
 
   const { data: comments } = await supabase
     .from("comments")
-    .select("content, user_id")
+    .select("content, user_id, id")
     .eq("post_id", postId as string)
     .order("created_at", { ascending: true });
 
@@ -27,7 +27,13 @@ export const Comments = async ({
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isAuthor = user && user.id === comments[0].user_id
+  const { data: post } = await supabase
+    .from("posts")
+    .select("user_id")
+    .eq("id", postId)
+    .single();
+
+  const isAuthor = user && user.id === post?.user_id;
 
   return (
     <>
@@ -51,11 +57,16 @@ export const Comments = async ({
       </div>
       <div className="w-full px-4 border-l-2 ml-6 md:ml-0 max-w-[550px]">
         {comments?.map((comment, index) => (
-          <div key={index} className="bg-bgdark p-4 rounded-lg my-3 flex items-center">
-            <div className="bg-neutral-100 text-black p-2 rounded-md w-[97%]">
+          <div
+            key={index}
+            className="bg-bgdark p-4 rounded-lg my-3 flex items-center"
+          >
+            <div className="bg-neutral-100 text-black p-2 rounded-md w-[97%] mr-3">
               {comment.content}
             </div>
-            {isAuthor ? <Trash2 className="ml-2" size={20}/> : ''}
+            {user && (user.id === comment.user_id || isAuthor) && (
+              <DeleteCommentButton commentId={comment.id} slug={slug} />
+            )}
           </div>
         ))}
       </div>
