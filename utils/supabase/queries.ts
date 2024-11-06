@@ -65,19 +65,19 @@ export const getComments = async ( postId: string ) => {
 // };
 
 // Insert a new comment into Supabase
-export const addComment = async (
-  content: string,
-  parent_id: string | null = null
-) => {
-  const supabase = createClient();
-  const { data, error } = await supabase
-    .from("comments")
-    .insert([{ content, parent_id }]);
+// export const addComment = async (
+//   content: string,
+//   parent_id: string | null = null
+// ) => {
+//   const supabase = createClient();
+//   const { data, error } = await supabase
+//     .from("comments")
+//     .insert([{ content, parent_id }]);
 
-  if (error) {
-    console.error("Error adding comment:", error);
-    return null;
-  }
+//   if (error) {
+//     console.error("Error adding comment:", error);
+//     return null;
+//   }
 
   // await supabase
   // .from('posts')
@@ -85,5 +85,5 @@ export const addComment = async (
   // .eq()
 
   // revalidatePath(`/single-post/comment-test-post")}`);
-  return data;
-};
+//   return data;
+// };

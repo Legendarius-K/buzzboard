@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { createClient } from "../../../../../utils/supabase/server";
 import Link from "next/link";
-import { MessageSquare, PencilLine, User } from "lucide-react";
+import { PencilLine, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getSinglePost } from "../../../../../utils/supabase/queries";
 import { formatDistanceToNow } from "date-fns";
@@ -40,7 +40,6 @@ export default async function PostPage({
     data: { user },
   } = await supabase.auth.getUser();
   const isAuthor = user && user.id === data.user_id;
-  console.log("isAuthor: ", isAuthor);
 
   return (
     <div className="flex flex-col items-center gap-3 w-full md:w-auto relative text-neutral-100 px-2 pb-16">
@@ -70,12 +69,6 @@ export default async function PostPage({
           {data?.content}
         </div>
         <div className="w-full pt-2 flex justify-end gap-3">
-          {/* {user && (
-            <MessageSquare
-              size={20}
-              className="text-neutral-200 hover:text-green-600 cursor-pointer"
-            />
-          )} */}
           {isAuthor && (
             <>
               <Link href={`/single-post/${params.slug}/edit`}>

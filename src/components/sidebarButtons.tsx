@@ -8,14 +8,13 @@ import { User } from "@supabase/supabase-js";
 
 export const SidebarButtons = () => {
      const [user, setUser] = useState<User | null>(null);
-    //  const [loading, setLoading] = useState(true);
 
      useEffect(() => {
        const fetchUser = async () => {
-         const supabase = createClient(); // Initialize the Supabase client
-         const { data } = await supabase.auth.getUser(); // Get user data
-         setUser(data.user); // Set the user data
-        //  setLoading(false); // Mark loading as complete
+         const supabase = createClient(); 
+         const { data } = await supabase.auth.getUser(); 
+         setUser(data.user); 
+       
        };
 
        fetchUser();
@@ -29,7 +28,7 @@ export const SidebarButtons = () => {
             <div className="w-[110px] mr-2">
               <CreateButton />
             </div>
-            <div className="w-[110px]">
+            <div onClick={() => setUser(null)} className="w-[110px]">
               <LogOutButton />
             </div>
           </div>
