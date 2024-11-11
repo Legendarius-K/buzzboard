@@ -32,7 +32,7 @@ export const Sidebar = () => {
         size={30}
         onClick={toggleSidebar}
         className={cn(
-          "transition-all cursor-pointer fixed left-[130px] text-neutral-300 hover:text-white z-40 h-full",
+          "transition-all cursor-pointer fixed left-[130px] text-primary hover:text-white z-40 h-full",
           !open && "left-[4px] rotate-180 ",
         )}
       />

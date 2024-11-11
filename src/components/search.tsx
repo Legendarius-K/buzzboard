@@ -41,6 +41,12 @@ export const Search = () => {
         setSearchQuery('')
     }, [pathname])
 
+    const clearInput = () => {
+      setTimeout(() => {
+        setSearchQuery('')
+      }, 1000)
+    }
+
     useEffect(() => {
         if (debouncedQuery && data?.length === 0) {
             const noPostsHandler = setTimeout(() => {
@@ -67,7 +73,7 @@ export const Search = () => {
           className=" outline-none text-zink-500 w-0 md:w-auto focus:w-auto focus:px-2"
           placeholder="Find post..."
           type="text"
-          onBlur={() => setSearchQuery("")}
+          onBlur={clearInput}
           onChange={(event) => {
             setSearchQuery(event.target.value);
           }}

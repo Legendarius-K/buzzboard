@@ -64,9 +64,9 @@ export const EditPostForm = ({
         >
           <option value="general">General</option>
           <option value="coding">Coding</option>
-          <option value="coding">Cakes</option>
-          <option value="coding">Carpentry</option>
-          <option value="coding">Insects</option>
+          <option value="cakes">Cakes</option>
+          <option value="carpentry">Carpentry</option>
+          <option value="insects">Insects</option>
         </select>
         <textarea
           required

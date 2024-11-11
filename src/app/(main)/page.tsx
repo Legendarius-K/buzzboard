@@ -16,7 +16,7 @@ export default async function Home() {
     }
 
     return (
-        <div className="flex justify-center w-full p-4 pb-10">
+        <div className="flex justify-center w-full p-4 pb-10 text-neutral-100">
             {error || data.length === 0 ? (
                 <div>No posts found</div>
             ) : (
