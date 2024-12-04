@@ -63,14 +63,14 @@ export const Search = () => {
 
 
     return (
-      <section className="absolute right-4 z-50 flex justify-center items-center bg-white py-1 pl-3 rounded-full">
+      <section className="z-50 flex justify-center items-center bg-white py-1 pl-3 rounded-full">
         <label className="flex justify-center" htmlFor="search">
           <SearchIcon size={20} color="gray" />
         </label>
         <input
           value={searchQuery}
           id="search"
-          className=" outline-none text-zink-500 w-0 md:w-auto focus:w-auto focus:px-2"
+          className=" outline-none text-zink-500 w-0 md:w-auto focus:w-auto focus:px-2 self-end"
           placeholder="Find post..."
           type="text"
           onBlur={clearInput}
@@ -100,10 +100,10 @@ export const Search = () => {
             )}
           </div>
         ) : (
-          <div className="z-40 absolute top-10 left-0 w-full flex flex-col gap-1 rounded-lg ">
+          <div className="z-40 absolute top-16 right-4 flex flex-col gap-1 rounded-lg ">
             {data?.map((post) => (
               <Link
-                className="bg-neutral-100 hover:bg-neutral-50 rounded-lg w-full p-2 border-2 shadow-lg"
+                className="bg-neutral-100 hover:bg-neutral-50 rounded-lg  p-2 border-2 shadow-lg w-[250px]"
                 key={post.id}
                 href={`/single-post/${post.slug}`}
               >
